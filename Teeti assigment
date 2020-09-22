@@ -1,0 +1,30 @@
+>> syms t;
+xt = 2*(heaviside(t+6)-heaviside(t+3))+(heaviside(t+3)-heaviside(t))*((2/3)*t+6) + ((-2/3)*t+6) * (heaviside(t)-heaviside(t-3)) + 2*(heaviside(t-3)-heaviside(t-6));
+subplot(3,1,1);
+ezplot(xt,[-6,6]);
+title('x(t)');
+axis([-6,6,0,6]);
+xticks(-6:3:6);
+xticklabels({'-6','-3','0','3','6'});
+yticks(0:2:6);
+yticklabels({'0','2','4','6'});
+
+x1t = subs(xt,t,t/3);
+subplot(3,1,2);
+ezplot(x1t,[-18,18]);
+title('x(t/3)');
+axis([-18,18,0,6]);
+xticks(-18:9:18);
+xticklabels({'-18','-9','0','9','18'});
+yticks(0:2:6);
+yticklabels({'0','2','4','6'});
+
+x2t = subs(xt,t,4*(t-0.5));
+subplot(3,1,3);
+ezplot(x2t,[-3,3]);
+title('x(4(x-0.5))');
+axis([-3,3 ,0,6]);
+xticks(-3:1:3);
+xticklabels({'-3','-2','-1','0','1','2','3'});
+yticks(0:2:6);
+yticklabels({'0','2','4','6'});
